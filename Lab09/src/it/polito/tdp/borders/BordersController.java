@@ -7,6 +7,7 @@ package it.polito.tdp.borders;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import it.polito.tdp.borders.model.Country;
 import it.polito.tdp.borders.model.Model;
@@ -64,6 +65,7 @@ public class BordersController {
 	
 	@FXML
     void doTrovaVicini(ActionEvent event) {
+		
 		txtResult.clear();
 		Country countryScelto = comboBox.getValue();
 		if(countryScelto == null) {
@@ -79,6 +81,15 @@ public class BordersController {
 		for(Country c : result) {
 			txtResult.appendText(c.toString()+"\n");
 		}
+		
+		//VERSIONE RECURSIVE
+//		Set<Country> viciniRec=model.trovaViciniRecursive(countryScelto);
+//		String output="";
+//	    for (Country cy:viciniRec) {
+//	    	output+=cy.getStateNme()+"\n";
+//	    }
+//	    txtResult.setText(output);
+//		}
 
 		
     }

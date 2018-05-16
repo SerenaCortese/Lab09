@@ -1,7 +1,9 @@
 package it.polito.tdp.borders.model;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.jgrapht.Graphs;
 import org.jgrapht.alg.ConnectivityInspector;
@@ -92,6 +94,30 @@ public class Model {
         }
 		
 		return result;
+	}
+	
+	//VERSIONE RECURSIVE
+	
+	public Set<Country> trovaViciniRecursive(Country c) {
+
+		Set <Country> cConnessa=new LinkedHashSet<Country>();
+		this.recursive(cConnessa,c);
+		return cConnessa;
+	}
+
+	private void recursive(Set<Country> cConnessa,Country inizio) {
+		
+		boolean flag=false;
+		if(!cConnessa.contains(inizio)) {
+			cConnessa.add(inizio);
+			flag=true;
+		}
+		if(flag) {
+			for(Country c:Graphs.neighborListOf(grafo, inizio)) {
+				recursive(cConnessa,c);
+			
+			}
+		}
 	}
 
 
